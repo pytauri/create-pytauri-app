@@ -1,0 +1,21 @@
+[project]
+name = "{{project_name}}"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "you" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pytauri == 0.3.*",
+    "pydantic == 2.*",
+    "anyio == 4.*"
+]
+
+[project.entry-points.pytauri]
+ext_mod = "{{project_name | replace: '-', '_'}}.ext_mod"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
