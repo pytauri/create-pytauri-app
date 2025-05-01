@@ -6,6 +6,11 @@ project_name:
   help: Project name
   default: pytauri-app
 
+package_name:
+  type: str
+  default: "{{ project_name | replace('-', '_')}}"
+  when: false
+
 package_type:
   type: str
   help: Package type
@@ -56,10 +61,10 @@ ui_template:
 _message_after_copy: |
   Done. Now run:
   
-  $ cd {{ project_name }}
-  $ uv venv --python-preference only-system
-  $ .venv\Scripts\activate
-  $ uv pip install -e src-tauri\src-python
+  cd {{ project_name }}
+  uv venv --python-preference only-system
+  .venv\Scripts\activate
+  uv pip install -e src-tauri\src-python
 
 
 ## TODO: Only execute init.py on complete package_type.
