@@ -1,57 +1,69 @@
+_subdirectory: "templates/"
+
 # pytauri-app
 project_name:
-    type: str
-    help: Project name
-    default: pytauri-app
+  type: str
+  help: Project name
+  default: pytauri-app
 
 package_type:
-    type: str
-    help: Package type
-    choices:
-        - wheel
-        - complete
-    default: wheel
+  type: str
+  help: Package type
+  choices:
+    - wheel
+    - complete
+  default: wheel
 
 
 # com.identifier.app
 identifier:
-    type: str
-    help: Identifier
-    default: "com.{{project_name}}.app"
+  type: str
+  help: Identifier
+  default: "com.{{ project_name }}.app"
 
 package_manager:
-    type: str
-    help: Choose your package manager
-    choices:
-        - pnpm
-        - yarn
-        - npm
-        - deno
-        - bun
+  type: str
+  help: Choose your package manager
+  choices:
+    - pnpm
+    #    - yarn
+    - npm
+    #    - deno
+    #    - bun
 
 ui_template:
-    type: str
-    help: Choose your ui template
-    choices:
-        - Vanilla
-        - Vue
-        - Svelte
-        - React
-        - Solid
-        - Angular
-        - Preact
-    default:
-        Vanilla
+  type: str
+  help: Choose your ui template
+  choices:
+    #    - Vanilla
+    - Vue
+    #    - Svelte
+    - React
+    #    - Solid
+    #    - Angular
+    #    - Preact
+  default:
+    Vue
 
-ui_flavor:
-    type: str
-    help: Choose your ui flavor
-    choices:
-        - TypeScript
-        - JavaScript
+# We force TypeScript for now.
+#ui_flavor:
+#    type: str
+#    help: Choose your ui flavor
+#    choices:
+#        - TypeScript
+#        - JavaScript
 
-# TODO: Only execute init.py on complete package_type.
-# TODO: Remove scripts directory after copying.
-_tasks:
-    - ["{{ _copier_python }}", scripts/init.py]
-#    - "rmdir {{ project_name }}/scripts"
+_message_after_copy: |
+  Done. Now run:
+  
+  $ cd {{ project_name }}
+  $ uv venv --python-preference only-system
+  $ .venv\Scripts\activate
+  $ uv pip install -e src-tauri\src-python
+
+
+## TODO: Only execute init.py on complete package_type.
+## TODO: Remove scripts directory after copying.
+#_tasks:
+#    - ["{{ _copier_python }}", scripts/init.py]
+##    - "rmdir {{ project_name }}/scripts"
