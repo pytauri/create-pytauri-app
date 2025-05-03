@@ -1,5 +1,5 @@
 [project]
-name = "{{project_name}}"
+name = "{{ project_name }}"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -8,13 +8,13 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "pytauri == 0.4.*",
+    "pytauri == 0.5.*",
     "pydantic == 2.*",
     "anyio == 4.*"
 ]
 
 [project.entry-points.pytauri]
-ext_mod = "{{project_name}}.ext_mod"
+ext_mod = "{{ package_name }}.ext_mod"
 
 [build-system]
 requires = ["hatchling"]

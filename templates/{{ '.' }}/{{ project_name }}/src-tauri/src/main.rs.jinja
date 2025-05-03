@@ -9,7 +9,7 @@ use pytauri::standalone::{
 };
 use tauri::{Builder, Manager as _};
 
-use {{project_name}}_lib::{ext_mod, tauri_generate_context};
+use {{ package_name }}_lib::{ext_mod, tauri_generate_context};
 
 fn main() -> Result<Infallible, Box<dyn Error>> {
     let py_env = if cfg!(dev) {
@@ -45,7 +45,7 @@ fn main() -> Result<Infallible, Box<dyn Error>> {
 
     // 👉 Equivalent to `python -m tauri_app`,
     // i.e, run the `src-tauri/python/tauri_app/__main__.py`
-    let py_script = PythonScript::Module("{{project_name}}".into());
+    let py_script = PythonScript::Module("{{ package_name }}".into());
 
     // 👉 `ext_mod` is your extension module, we export it from memory,
     // so you don't need to compile it into a binary file (.pyd/.so).
