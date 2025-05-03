@@ -43,8 +43,8 @@ fn main() -> Result<Infallible, Box<dyn Error>> {
         PythonInterpreterEnv::Standalone(resource_dir.into())
     };
 
-    // 👉 Equivalent to `python -m tauri_app`,
-    // i.e, run the `src-tauri/python/tauri_app/__main__.py`
+    // 👉 Equivalent to `python -m {{ package_name }}`,
+    // i.e, run the `src-tauri/python/{{ package_name }}/__main__.py`
     let py_script = PythonScript::Module("{{ package_name }}".into());
 
     // 👉 `ext_mod` is your extension module, we export it from memory,

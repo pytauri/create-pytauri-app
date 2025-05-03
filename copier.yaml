@@ -10,7 +10,6 @@ package_name:
     default: "{{ project_name | replace('-', '_')}}"
     when: false
 
-# com.identifier.app
 identifier:
     type: str
     help: Identifier

@@ -1,7 +1,7 @@
 import sys
 
 from anyio.from_thread import start_blocking_portal
-from pydantic import BaseModel
+from pydantic import BaseModel, RootModel
 from pytauri import (
     BuilderArgs,
     Commands,
@@ -16,25 +16,23 @@ class Person(BaseModel):
     name: str
 
 
-class Greeting(BaseModel):
-    message: str
+Greeting = RootModel[str]
 
 
 @commands.command()
 async def greet(body: Person) -> Greeting:
     return Greeting(
-        message=f"Hello, {body.name}! You've been greeted from Python {sys.version}!"
+        f"Hello, {body.name}! You've been greeted from Python {sys.version}!"
     )
 
 
-def main() -> None:
+def main() -> int:
     with start_blocking_portal("asyncio") as portal:  # or `trio`
         app = builder_factory().build(
             BuilderArgs(
                 context=context_factory(),
-                # 👇
                 invoke_handler=commands.generate_handler(portal),
-                # 👆
             )
         )
-        app.run()
+        exit_code = app.run_return()
+        return exit_code
