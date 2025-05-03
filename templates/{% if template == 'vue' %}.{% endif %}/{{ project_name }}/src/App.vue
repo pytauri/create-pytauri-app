@@ -18,7 +18,7 @@ async function greet() {
     const pyGreeting = await pyInvoke<Greeting>("greet", {
       name: name.value,
     });
-    greetMsg.value = rsGreeting + "\n" + pyGreeting.message;
+    greetMsg.value = rsGreeting + "\n" + pyGreeting;
 }
 </script>
 
