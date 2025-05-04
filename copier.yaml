@@ -28,7 +28,11 @@ _message_after_copy: |
         cd {{ project_name }}
         pnpm install
         uv venv --python-preference only-system
+        {%- if _copier_conf.os == "windows" %}
         .venv\Scripts\activate
+        {%- else %}
+        source .venv/bin/activate
+        {%- endif %}
         uv sync
 
     For Desktop development, run:
