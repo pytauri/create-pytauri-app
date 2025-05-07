@@ -1,16 +1,15 @@
+# Create-PyTauri
+
+The recommended way to start a new PyTauri project.
+
 ![banner.png](assets/banner.png)
-
-# Create-pytauri
-
-The recommended way to start a new PyTauri project.  
-Currently only has Vue support.
 
 ## How to use
 
-Make sure you have [uv](https://docs.astral.sh/uv/) installed.
+Make sure you have [uv](https://docs.astral.sh/uv/) and [pnpm](https://pnpm.io/) installed.
 
 ```shell
-uvx copier copy https://github.com/ISOR3X/create-pytauri project_name
+uvx copier copy https://github.com/pytauri/create-pytauri .
 ```
 
 ## To do
