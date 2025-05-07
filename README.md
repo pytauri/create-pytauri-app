@@ -1,8 +1,8 @@
 # Create-PyTauri
 
-The recommended way to start a new PyTauri project.
+![banner.png](https://raw.githubusercontent.com/pytauri/pytauri/v0.5.0/docs/assets/banner.png)
 
-![banner.png](assets/banner.png)
+The recommended way to start a new PyTauri project.
 
 ## How to use
 
