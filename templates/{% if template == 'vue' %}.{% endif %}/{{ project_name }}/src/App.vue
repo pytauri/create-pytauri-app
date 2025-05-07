@@ -3,22 +3,19 @@ import { ref } from "vue";
 import { invoke } from "@tauri-apps/api/core";
 import { pyInvoke } from "tauri-plugin-pytauri-api";
 
-interface Greeting {
-  message: string;
-}
-
-const name = ref("")
-const greetMsg = ref("")
+const greetMsg = ref("");
+const name = ref("");
 
 async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    const rsGreeting = await invoke<string>("greet", {
-      name: name.value,
-    });
-    const pyGreeting = await pyInvoke<Greeting>("greet", {
-      name: name.value,
-    });
-    greetMsg.value = rsGreeting + "\n" + pyGreeting;
+  // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
+  const rsGreeting = await invoke<string>("greet", {
+    name: name.value,
+  });
+  // Learn more about PyTauri commands at https://pytauri.github.io/pytauri/latest/usage/concepts/ipc/
+  const pyGreeting = await pyInvoke<string>("greet", {
+    name: name.value,
+  });
+  greetMsg.value = rsGreeting + "\n" + pyGreeting;
 }
 </script>
 
