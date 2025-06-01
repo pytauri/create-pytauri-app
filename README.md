@@ -1,4 +1,4 @@
-# Create-PyTauri
+# create-pytauri-app
 
 ![banner.png](https://raw.githubusercontent.com/pytauri/pytauri/v0.5.0/docs/assets/banner.png)
 
