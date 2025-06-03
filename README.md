@@ -1,6 +1,6 @@
-# create-pytauri-app
+![banner.png](https://raw.githubusercontent.com/pytauri/branding/main/assets/banner.png)
 
-![banner.png](https://raw.githubusercontent.com/pytauri/pytauri/v0.5.0/docs/assets/banner.png)
+# create-pytauri-app
 
 The recommended way to start a new PyTauri project.
 
