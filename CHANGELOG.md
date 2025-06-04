@@ -9,5 +9,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Incremented all PyTauri packages to v0.6.0
-- Changed Python `builder_factory.build()` argument from `BuilderArgs` to dict.
-- Updated PyO3 to v0.25
+- Updated code for [PyTauri v0.6.0](https://github.com/pytauri/pytauri/blob/main/CHANGELOG.md)
