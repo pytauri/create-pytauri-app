@@ -22,7 +22,7 @@ async function greet() {
 <template>
   <main class="container">
     <h1>Welcome to PyTauri</h1>
-    <a href="https://github.com/pytauri/pytauri" target="_blank">
+    <a href="https://pytauri.github.io/pytauri/latest/" target="_blank">
       <img src="/pytauri.svg" class="logo pytauri" alt="Pytauri logo"/>
     </a>
     <div class="row">
