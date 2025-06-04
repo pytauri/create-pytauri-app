@@ -7,6 +7,10 @@ The recommended way to start a new PyTauri project.
 ## How to use
 
 Make sure you have [uv](https://docs.astral.sh/uv/) and [pnpm](https://pnpm.io/) installed.
+Current supported frontend frameworks:
+- Vue
+- React
+- Svelte
 
 ```shell
 uvx copier copy https://github.com/pytauri/create-pytauri-app .
