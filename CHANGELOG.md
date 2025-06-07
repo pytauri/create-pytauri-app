@@ -34,7 +34,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Bump all pytauri packages to `0.6`
     - Migrate for pytauri `v0.6` [breaking changes](https://pytauri.github.io/pytauri/0.6/CHANGELOG/)
     - Bump `pyo3` to `0.25`
-    - Add `Svelte` support
 
 ## [0.1.0]
 

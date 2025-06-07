@@ -6,6 +6,6 @@
     "ms-python.vscode-pylance",
     "charliermarsh.ruff",
     "ms-python.debugpy",
-    "tauri-apps.tauri-vscode"
+    "tauri-apps.tauri-vscode",
   ]
 }

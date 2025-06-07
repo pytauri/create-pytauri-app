@@ -21,7 +21,6 @@ template:
     choices:
         Vue: vue
         React: react
-        Svelte: svelte
     default: vue
 
 _message_after_copy: |
