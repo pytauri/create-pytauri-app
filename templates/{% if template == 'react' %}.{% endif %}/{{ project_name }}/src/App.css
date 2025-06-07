@@ -103,9 +103,11 @@ button {
 
   }
 }
+
 #greet-input {
   margin-right: 5px;
 }
+
 #greet-msg {
   opacity: 50%;
 }

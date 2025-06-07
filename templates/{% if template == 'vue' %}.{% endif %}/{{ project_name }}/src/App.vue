@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {ref} from "vue";
-import {invoke} from "@tauri-apps/api/core";
-import {pyInvoke} from "tauri-plugin-pytauri-api";
+import { ref } from "vue";
+import { invoke } from "@tauri-apps/api/core";
+import { pyInvoke } from "tauri-plugin-pytauri-api";
 
 const greetMsg = ref("");
 const name = ref("");
@@ -23,26 +23,26 @@ async function greet() {
   <main class="container">
     <h1>Welcome to PyTauri</h1>
     <a href="https://pytauri.github.io/pytauri/latest/" target="_blank">
-      <img src="/pytauri.svg" class="logo pytauri" alt="Pytauri logo"/>
+      <img src="/pytauri.svg" class="logo pytauri" alt="Pytauri logo" />
     </a>
     <div class="row">
       <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" class="logo vite" alt="Vite logo"/>
+        <img src="/vite.svg" class="logo vite" alt="Vite logo" />
       </a>
       <a href="https://tauri.app" target="_blank">
-        <img src="/tauri.svg" class="logo tauri" alt="Tauri logo"/>
+        <img src="/tauri.svg" class="logo tauri" alt="Tauri logo" />
       </a>
       <a href="https://vuejs.org/" target="_blank">
-        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo"/>
+        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
       </a>
       <a href="https://python.org" target="_blank">
-        <img src="/python.svg" class="logo python" alt="Python logo"/>
+        <img src="/python.svg" class="logo python" alt="Python logo" />
       </a>
     </div>
     <p>Click on any logo to learn more.</p>
 
     <form class="row" @submit.prevent="greet">
-      <input id="greet-input" v-model="name" placeholder="Enter a name..."/>
+      <input id="greet-input" v-model="name" placeholder="Enter a name..." />
       <button type="submit">Greet</button>
     </form>
     <p id="greet-msg">{{ greetMsg }}</p>
@@ -50,7 +50,6 @@ async function greet() {
 </template>
 
 <style scoped>
-
 .logo.vite:hover {
   filter: drop-shadow(0 0 2em #747bff);
 }
@@ -70,7 +69,6 @@ async function greet() {
 .logo.pytauri:hover {
   filter: drop-shadow(0 0 2em #2294b2);
 }
-
 </style>
 <style>
 :root {
@@ -178,9 +176,11 @@ button {
 
   }
 }
+
 #greet-input {
   margin-right: 5px;
 }
+
 #greet-msg {
   opacity: 50%;
 }
@@ -196,5 +196,4 @@ button {
     background-color: #0f0f0f98;
   }
 }
-
 </style>
