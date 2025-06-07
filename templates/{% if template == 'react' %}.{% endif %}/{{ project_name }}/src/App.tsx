@@ -20,7 +20,7 @@ function App() {
     <main className="container">
       <h1>Welcome to PyTauri</h1>
       <a href="https://pytauri.github.io/pytauri/latest/" target="_blank">
-        <img src="/pytauri.svg" className="logo pytauri" alt="Pytauri logo" />
+        <img src="/pytauri.svg" className="logo pytauri" alt="PyTauri logo" />
       </a>
       <div className="row">
         <a href="https://vitejs.dev" target="_blank">
