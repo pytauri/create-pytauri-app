@@ -3,7 +3,6 @@ import sys
 from anyio.from_thread import start_blocking_portal
 from pydantic import BaseModel, RootModel
 from pytauri import (
-    BuilderArgs,
     Commands,
     builder_factory,
     context_factory,
