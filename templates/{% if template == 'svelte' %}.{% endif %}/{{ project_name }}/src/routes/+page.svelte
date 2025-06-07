@@ -33,7 +33,7 @@
         <a href="https://tauri.app" target="_blank">
             <img src="/tauri.svg" class="logo tauri" alt="Tauri logo"/>
         </a>
-        <a href="https://https://svelte.dev/" target="_blank">
+        <a href="https://svelte.dev/" target="_blank">
             <img src="/svelte.svg" class="logo svelte-kit" alt="Svelte logo"/>
         </a>
         <a href="https://python.org" target="_blank">
