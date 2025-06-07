@@ -1,6 +1,6 @@
 <script lang="ts">
-  import {invoke} from "@tauri-apps/api/core";
-  import {pyInvoke} from "tauri-plugin-pytauri-api";
+  import { invoke } from "@tauri-apps/api/core";
+  import { pyInvoke } from "tauri-plugin-pytauri-api";
 
   let name = $state("");
   let greetMsg = $state("");
@@ -23,6 +23,7 @@
 
 <main class="container">
   <h1>Welcome to PyTauri</h1>
+
   <a href="https://pytauri.github.io/pytauri/latest/" target="_blank">
     <img src="/pytauri.svg" class="logo pytauri" alt="Pytauri logo" />
   </a>
