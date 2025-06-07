@@ -1,14 +1,9 @@
 {
-  "name": "create-pytauri",
+  "name": "create-pytauri-app",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview",
-    "tauri": "tauri"
-  },
+  "scripts": {},
   "dependencies": {
     "vue": "^3.5.13",
     "react": "^18.3.1",
@@ -26,5 +21,6 @@
     "vite": "^6.0.3",
     "vue-tsc": "^2.1.10",
     "@tauri-apps/cli": "^2"
-  }
+  },
+  "packageManager": "pnpm@10.11.1+sha256.211e9990148495c9fc30b7e58396f7eeda83d9243eb75407ea4f8650fb161f7c"
 }
