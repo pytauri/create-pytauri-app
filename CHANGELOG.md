@@ -24,9 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0]
 
+## Highlights
+
+- [#10](https://github.com/pytauri/create-pytauri-app/pull/10) - feat: add svelte support.
+
 ## Added
 
-- [#10](https://github.com/pytauri/create-pytauri-app/issues/9) - feat: add svelte support.
 - [#7](https://github.com/pytauri/create-pytauri-app/pull/7) - feat: add pytauri home link to template.
 
 ### Changed
