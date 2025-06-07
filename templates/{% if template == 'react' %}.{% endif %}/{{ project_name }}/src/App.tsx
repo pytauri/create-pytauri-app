@@ -18,8 +18,10 @@ function App() {
 
   return (
     <main className="container">
-      <h1>Welcome to Tauri + React</h1>
-
+      <h1>Welcome to PyTauri</h1>
+      <a href="https://pytauri.github.io/pytauri/latest/" target="_blank">
+        <img src="/pytauri.svg" className="logo pytauri" alt="PyTauri logo" />
+      </a>
       <div className="row">
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo vite" alt="Vite logo" />
@@ -27,17 +29,20 @@ function App() {
         <a href="https://tauri.app" target="_blank">
           <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
         </a>
-        <a href="https://reactjs.org" target="_blank">
+        <a href="https://react.dev/" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
+        <a href="https://python.org" target="_blank">
+          <img src="/python.svg" className="logo python" alt="Python logo" />
+        </a>
       </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
+      <p>Click on any logo to learn more.</p>
 
       <form
         className="row"
-        onSubmit={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
-          greet();
+          await greet();
         }}
       >
         <input
@@ -47,7 +52,7 @@ function App() {
         />
         <button type="submit">Greet</button>
       </form>
-      <p>{greetMsg}</p>
+      <p id="greet-msg">{greetMsg}</p>
     </main>
   );
 }

@@ -21,8 +21,10 @@ async function greet() {
 
 <template>
   <main class="container">
-    <h1>Welcome to Tauri + Vue</h1>
-
+    <h1>Welcome to PyTauri</h1>
+    <a href="https://pytauri.github.io/pytauri/latest/" target="_blank">
+      <img src="/pytauri.svg" class="logo pytauri" alt="PyTauri logo" />
+    </a>
     <div class="row">
       <a href="https://vitejs.dev" target="_blank">
         <img src="/vite.svg" class="logo vite" alt="Vite logo" />
@@ -33,14 +35,17 @@ async function greet() {
       <a href="https://vuejs.org/" target="_blank">
         <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
       </a>
+      <a href="https://python.org" target="_blank">
+        <img src="/python.svg" class="logo python" alt="Python logo" />
+      </a>
     </div>
-    <p>Click on the Tauri, Vite, and Vue logos to learn more.</p>
+    <p>Click on any logo to learn more.</p>
 
     <form class="row" @submit.prevent="greet">
       <input id="greet-input" v-model="name" placeholder="Enter a name..." />
       <button type="submit">Greet</button>
     </form>
-    <p>{{ greetMsg }}</p>
+    <p id="greet-msg">{{ greetMsg }}</p>
   </main>
 </template>
 
@@ -53,6 +58,17 @@ async function greet() {
   filter: drop-shadow(0 0 2em #249b73);
 }
 
+.logo.python:hover {
+  filter: drop-shadow(0 0 2em #7b661b);
+}
+
+.logo.tauri:hover {
+  filter: drop-shadow(0 0 2em #24c8db);
+}
+
+.logo.pytauri:hover {
+  filter: drop-shadow(0 0 2em #2294b2);
+}
 </style>
 <style>
 :root {
@@ -71,9 +87,15 @@ async function greet() {
   -webkit-text-size-adjust: 100%;
 }
 
-.container {
+body {
   margin: 0;
-  padding-top: 10vh;
+}
+
+.container {
+  box-sizing: border-box;
+  padding: 8px;
+  height: 100vh;
+  gap: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,19 +103,26 @@ async function greet() {
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
   will-change: filter;
   transition: 0.75s;
+
+  &:not(.pytauri) {
+    height: 3em;
+  }
+
+  &.pytauri {
+    height: 6em;
+  }
 }
 
-.logo.tauri:hover {
-  filter: drop-shadow(0 0 2em #24c8db);
-}
 
 .row {
   display: flex;
   justify-content: center;
+
+  &:has(a) {
+    gap: 2em;
+  }
 }
 
 a {
@@ -113,56 +142,58 @@ h1 {
 input,
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   color: #0f0f0f;
-  background-color: #ffffff;
-  transition: border-color 0.25s;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+input {
+  background-color: #ffffff;
+  border: 1px solid transparent;
+}
+
+button {
+  border-width: 0;
+  border-top: 2px solid color-mix(in oklab, white 50%, transparent);
+  background: linear-gradient(-45deg, #205f8a, #24c8db);
+  transition: opacity 0.5s ease;
+  color: white;
 }
 
 button {
   cursor: pointer;
-}
 
-button:hover {
-  border-color: #396cd8;
-}
-button:active {
-  border-color: #396cd8;
-  background-color: #e8e8e8;
-}
+  &:hover {
+    opacity: 70%;
+  }
 
-input,
-button {
-  outline: none;
+  &:active {
+    opacity: 30%;
+
+  }
 }
 
 #greet-input {
   margin-right: 5px;
 }
 
+#greet-msg {
+  opacity: 50%;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color: #f6f6f6;
-    background-color: #2f2f2f;
+    background-color: #1b1b1f;
   }
 
-  a:hover {
-    color: #24c8db;
-  }
-
-  input,
-  button {
+  input {
     color: #ffffff;
     background-color: #0f0f0f98;
   }
-  button:active {
-    background-color: #0f0f0f69;
-  }
 }
-
 </style>
