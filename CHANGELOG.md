@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0]
+
 ### Added
 
 - [#14](https://github.com/pytauri/create-pytauri-app/pull/14) - feat: bump `pytauri` to `v0.7`.
@@ -46,5 +48,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0]
 
 [unreleased]: https://github.com/pytauri/create-pytauri-app/tree/HEAD
+[0.3.0]: https://github.com/pytauri/create-pytauri-app/releases/tag/v0.3.0
 [0.2.0]: https://github.com/pytauri/create-pytauri-app/releases/tag/v0.2.0
 [0.1.0]: https://github.com/pytauri/create-pytauri-app/releases/tag/v0.1.0
