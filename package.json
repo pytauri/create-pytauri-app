@@ -10,7 +10,7 @@
     "react-dom": "^18.3.1",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
-    "tauri-plugin-pytauri-api": "^0.6.0"
+    "tauri-plugin-pytauri-api": "^0.7.0"
   },
   "devDependencies": {
     "vue-tsc": "^2.1.10",
