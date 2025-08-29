@@ -22,6 +22,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- [#16](https://github.com/pytauri/create-pytauri-app/pull/16) - fix(build): bump `setuptools >= 80` for `build-system`.
+
+### Internal
+
+- [#16](https://github.com/pytauri/create-pytauri-app/pull/16) - chore: explicitly require `uv >= 0.8.14` for development.
+
 ## [0.3.0]
 
 ### Added
