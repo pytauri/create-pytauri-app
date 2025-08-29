@@ -7,6 +7,9 @@ dependencies = [
     "pydantic == 2.*",
     "anyio == 4.*",
     # [build-system]
-    "setuptools>=61",
-    "setuptools_scm>=8",
+    "setuptools >= 80",
+    "setuptools-scm >= 8",
 ]
+
+[tool.uv]
+required-version = ">=0.8.14"
