@@ -22,6 +22,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0]
+
+### Added
+
+- [#18](https://github.com/pytauri/create-pytauri-app/pull/18) - feat: bump `pytauri` to `v0.8`.
+
+    - bump `pytauri` monorepo to `v0.8`
+    - bump `python-build-standard` to `20250828`
+
 ### Changed
 
 - [#16](https://github.com/pytauri/create-pytauri-app/pull/16) - fix(build): bump `setuptools >= 80` for `build-system`.
@@ -56,6 +65,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0]
 
 [unreleased]: https://github.com/pytauri/create-pytauri-app/tree/HEAD
+[0.4.0]: https://github.com/pytauri/create-pytauri-app/releases/tag/v0.4.0
 [0.3.0]: https://github.com/pytauri/create-pytauri-app/releases/tag/v0.3.0
 [0.2.0]: https://github.com/pytauri/create-pytauri-app/releases/tag/v0.2.0
 [0.1.0]: https://github.com/pytauri/create-pytauri-app/releases/tag/v0.1.0
