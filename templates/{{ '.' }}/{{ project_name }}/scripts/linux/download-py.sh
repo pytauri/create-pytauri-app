@@ -2,8 +2,8 @@
 
 ### Argument ###
 
-PYTHON_VERSION="3.13.3"  # update these by yourself
-TAG="20250409"  # update these by yourself
+PYTHON_VERSION="3.13.7"  # update these by yourself
+TAG="20250828"  # update these by yourself
 TARGET="x86_64-unknown-linux-gnu"
 
 ################
