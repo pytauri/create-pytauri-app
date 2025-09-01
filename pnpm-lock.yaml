@@ -21,8 +21,8 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       tauri-plugin-pytauri-api:
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^0.8.0
+        version: 0.8.0
       vue:
         specifier: ^3.5.13
         version: 3.5.16(typescript@5.6.3)
@@ -463,6 +463,9 @@ packages:
   '@tauri-apps/api@2.5.0':
     resolution: {integrity: sha512-Ldux4ip+HGAcPUmuLT8EIkk6yafl5vK0P0c0byzAKzxJh7vxelVtdPONjfgTm96PbN24yjZNESY8CKo8qniluA==}
 
+  '@tauri-apps/api@2.8.0':
+    resolution: {integrity: sha512-ga7zdhbS2GXOMTIZRT0mYjKJtR9fivsXzsyq5U3vjDL0s6DTMwYRm0UHNjzTY5dh4+LSC68Sm/7WEiimbQNYlw==}
+
   '@tauri-apps/cli-darwin-arm64@2.5.0':
     resolution: {integrity: sha512-VuVAeTFq86dfpoBDNYAdtQVLbP0+2EKCHIIhkaxjeoPARR0sLpFHz2zs0PcFU76e+KAaxtEtAJAXGNUc8E1PzQ==}
     engines: {node: '>= 10'}
@@ -874,8 +877,8 @@ packages:
     resolution: {integrity: sha512-y453Ac1Xi/MFXbGIDK89YH1CeXlFk+aTsDQ1uMc7iE+iVau6ZnE4t3iWsr0oxKnIApjfI7CL4R1NEHzVMUrkVg==}
     engines: {node: '>=18'}
 
-  tauri-plugin-pytauri-api@0.7.0:
-    resolution: {integrity: sha512-RxAAI/q97kJtURB1fmlxpCCQsOYamcuNVwfZ/s2RbMQLViOKxux7AYI8LdrTetWmwCGEVA0FmUA+9nhff0QcUA==}
+  tauri-plugin-pytauri-api@0.8.0:
+    resolution: {integrity: sha512-mUw4JWTgHAdR1E4pJM+eCafS0E2ez3UEvC/NjkAOpzQuQjZ8u4CKikPJGoC2bTw5ABAmF68WkoOLySFYFbJp/Q==}
 
   tinyglobby@0.2.14:
     resolution: {integrity: sha512-tX5e7OM1HnYr2+a2C/4V0htOcSQcoSTH9KgJnVvNm5zm/cyEWKJ7j7YutsH9CxMdtOkkLFy2AHrMci9IM8IPZQ==}
@@ -1289,6 +1292,8 @@ snapshots:
       - supports-color
 
   '@tauri-apps/api@2.5.0': {}
+
+  '@tauri-apps/api@2.8.0': {}
 
   '@tauri-apps/cli-darwin-arm64@2.5.0':
     optional: true
@@ -1721,9 +1726,9 @@ snapshots:
       magic-string: 0.30.17
       zimmerframe: 1.1.2
 
-  tauri-plugin-pytauri-api@0.7.0:
+  tauri-plugin-pytauri-api@0.8.0:
     dependencies:
-      '@tauri-apps/api': 2.5.0
+      '@tauri-apps/api': 2.8.0
 
   tinyglobby@0.2.14:
     dependencies:

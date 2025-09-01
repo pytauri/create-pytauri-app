@@ -42,7 +42,7 @@ dependencies = [
 requires-dist = [
     { name = "anyio", specifier = "==4.*" },
     { name = "pydantic", specifier = "==2.*" },
-    { name = "pytauri", specifier = "==0.7.*" },
+    { name = "pytauri", specifier = "==0.8.*" },
     { name = "setuptools", specifier = ">=80" },
     { name = "setuptools-scm", specifier = ">=8" },
 ]
@@ -300,7 +300,7 @@ wheels = [
 
 [[package]]
 name = "pytauri"
-version = "0.7.2"
+version = "0.8.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -309,9 +309,9 @@ dependencies = [
     { name = "pydantic" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/81/11/9e4f37fdbef145bfcec8483c18d19187ee140f2ee4cd8db645c4e1690520/pytauri-0.7.2.tar.gz", hash = "sha256:3a3d6bddeb872b671257dbff16a502958db4cada1ea445edf006771d180c1219", size = 32831, upload-time = "2025-07-28T10:05:12.468Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/cc/4b/5dfba4c317436b5882e5446e66504cb6d06594f338ff9cced3ace9b71aa1/pytauri-0.8.0.tar.gz", hash = "sha256:e172f08c6afd46b8b772f951082456356cfb6e3b192379d9557ede9699ac24c2", size = 40400, upload-time = "2025-09-01T09:25:16.525Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b0/a6/e56456dc34e6d57b6c8c394310fdb2e12e4f1af3d608334705569086d94d/pytauri-0.7.2-py3-none-any.whl", hash = "sha256:6ec5aeaab68bb1d9006f9e694bf64c0cd0093077865dcca63197f0d90cadb0b3", size = 40713, upload-time = "2025-07-28T10:05:11.465Z" },
+    { url = "https://files.pythonhosted.org/packages/5d/15/2679cf676f1c621a9decbf79abfa33891b9d7882d9bcd24751b5e554a095/pytauri-0.8.0-py3-none-any.whl", hash = "sha256:e7dc9b21f5ecf081b1e2751abf788792c8804cb3b2637de2b2d0b11a04794174", size = 62559, upload-time = "2025-09-01T09:25:15.428Z" },
 ]
 
 [[package]]
