@@ -22,6 +22,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Security
+
+- [#19](https://github.com/pytauri/create-pytauri-app/pull/19) - chore(deps-dev): bump vite from 6.3.5 to 6.3.6 in the npm_and_yarn group across 1 directory.
+
+    bump `vite` to `6.3.6` to fix security advisory.
+
 ## [0.4.0]
 
 ### Added
