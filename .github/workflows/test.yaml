@@ -172,6 +172,25 @@ jobs:
             scripts/macos/download-py.sh
             scripts/macos/build.sh
 
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ matrix.os }}-${{ matrix.template }}-py${{ matrix.python-version }}"
+          # ```
+          # target/bundle-release/bundle/deb/pytauri-app_0.1.0_amd64.deb
+          # target/{profile}/bundle/{bundle_type}/{product_name}_{version}_{arch}.{bundle_ext}
+          # ```
+          # see: <https://github.com/pytauri/example-nicegui-app/releases>
+          path: |
+              target/**/bundle/**/*.deb
+              target/**/bundle/**/*.rpm
+              target/**/bundle/**/*.AppImage
+              target/**/bundle/**/*.msi
+              target/**/bundle/**/*.exe
+              target/**/bundle/**/*.dmg
+              target/**/bundle/**/*.app/
+          if-no-files-found: error
+
   # https://github.com/marketplace/actions/alls-green#why
   lint-test-all-green: # This job does nothing and is only used for the branch protection
     if: always() # IMPORTANT: mandatory
