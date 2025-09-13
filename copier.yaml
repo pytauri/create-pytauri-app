@@ -13,7 +13,7 @@ package_name:
 identifier:
     type: str
     help: Identifier
-    default: "com.{{ project_name }}.app"
+    default: "com.username.{{ project_name }}"
 
 template:
     type: str

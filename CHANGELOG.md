@@ -22,6 +22,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- [#20](https://github.com/pytauri/create-pytauri-app/pull/20) - fix: fix Linux and macOS build scripts.
+
+    - Pass the `libpython` path correctly on Linux and macOS as `-L` arguments to `RUSTFLAGS`.
+    - Temporarily disable `appimage` bundle target
+
+        Currently unable to build `appimage`, see <https://github.com/python-pillow/Pillow/issues/9198>.
+
+    - Change the default `identifier` to `com.username.{{ project_name }}`
+
+        Tauri no longer recommends identifiers ending with `.app`, see <https://github.com/tauri-apps/tauri/issues/12674>.
+
 ### Security
 
 - [#19](https://github.com/pytauri/create-pytauri-app/pull/19) - chore(deps-dev): bump vite from 6.3.5 to 6.3.6 in the npm_and_yarn group across 1 directory.
