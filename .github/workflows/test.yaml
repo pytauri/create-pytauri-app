@@ -94,7 +94,9 @@ jobs:
           # otherwise `uv` may incorrectly use other Python versions cached in GitHub Actions.
           # See: <https://github.com/astral-sh/uv/pull/9454>.
           python-version: ${{ matrix.python-version }}
-          version-file: "pyproject.toml"
+          # TODO: set `[tool.uv].required-version` version in template
+          # version-file: "pyproject.toml"
+          version: "latest"
           enable-cache: true
           activate-environment: true
       - name: Setup Python
@@ -106,11 +108,16 @@ jobs:
       # see: <https://github.com/pnpm/action-setup>
       - name: Install pnpm
         uses: pnpm/action-setup@v4
+        with:
+          # TODO: set `packageManager` version in template
+          version: "latest"
       # see: <https://github.com/actions/setup-node>
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: package.json
+          # TODO: set `engines.node` version in template
+          # node-version-file: package.json
+          node-version: lts/*
           cache: "pnpm"
 
       # see: <https://github.com/dtolnay/rust-toolchain>
