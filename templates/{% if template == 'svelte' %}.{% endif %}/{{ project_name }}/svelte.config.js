@@ -10,6 +10,8 @@ const config = {
   preprocess: vitePreprocess(),
   kit: {
     adapter: adapter({
+      // match `build.frontendDist` in `tauri.conf.json`
+      pages: "dist",
       fallback: "index.html",
     }),
   },
