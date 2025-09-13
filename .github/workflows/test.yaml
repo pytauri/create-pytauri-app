@@ -119,6 +119,14 @@ jobs:
           # node-version-file: package.json
           node-version: lts/*
           cache: "pnpm"
+          # TODO: We need to manually specify `cache-dependency-path`,
+          # because the generated template doesn't include `pnpm-lock.yaml`,
+          # which would cause `actions/setup-node` errors, see:
+          # - <https://github.com/actions/setup-node/issues/782#issuecomment-1594677973>
+          # - <https://github.com/actions/setup-node/issues/928>
+          cache-dependency-path: |
+            **/package.json
+            **/pnpm-lock.yaml
 
       # see: <https://github.com/dtolnay/rust-toolchain>
       - name: Install Rust stable
