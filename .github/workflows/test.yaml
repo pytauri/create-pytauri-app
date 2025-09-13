@@ -182,13 +182,13 @@ jobs:
           # ```
           # see: <https://github.com/pytauri/example-nicegui-app/releases>
           path: |
-              target/**/bundle/**/*.deb
-              target/**/bundle/**/*.rpm
-              target/**/bundle/**/*.AppImage
-              target/**/bundle/**/*.msi
-              target/**/bundle/**/*.exe
-              target/**/bundle/**/*.dmg
-              target/**/bundle/**/*.app/
+              target/*/bundle/*/*.deb
+              target/*/bundle/*/*.rpm
+              target/*/bundle/*/*.AppImage
+              target/*/bundle/*/*.msi
+              target/*/bundle/*/*.exe
+              target/*/bundle/*/*.dmg
+              target/*/bundle/*/*.app/
           if-no-files-found: error
 
   # https://github.com/marketplace/actions/alls-green#why
