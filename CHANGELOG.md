@@ -22,6 +22,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Highlights
+
+#### GitHub Publication Workflow Template
+
+> - [#23](https://github.com/pytauri/create-pytauri-app/pull/23) - feat: add publish workflow template.
+
+We've added `.github/workflows/publish.yaml` to the template to help you publish your application on GitHub Actions.
+This workflow is triggered every time you push to the `release` branch, or you can also trigger it manually.
+Alternatively, you can modify it to suit your workflow.
+
 ### Fixed
 
 - [#20](https://github.com/pytauri/create-pytauri-app/pull/20) - fix: fix Linux and macOS build scripts.
