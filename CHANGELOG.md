@@ -41,6 +41,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
     bump `vite` to `6.3.6` to fix security advisory.
 
+### Internal
+
+- [#21](https://github.com/pytauri/create-pytauri-app/pull/21) - ci: add template testing CI.
+
 ## [0.4.0]
 
 ### Added
