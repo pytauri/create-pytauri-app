@@ -84,6 +84,12 @@ jobs:
             echo "PWD: $PWD"
             echo "Files:"
             find .
+      - name: Upload generated project
+        uses: actions/upload-artifact@v4
+        with:
+          name: "template-${{ matrix.template }}-${{ matrix.os }}-py${{ matrix.python-version }}"
+          path: "./"
+          if-no-files-found: error
 
       - name: Install uv
         uses: astral-sh/setup-uv@v6
@@ -175,7 +181,7 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ matrix.os }}-${{ matrix.template }}-py${{ matrix.python-version }}"
+          name: "build-${{ matrix.os }}-${{ matrix.template }}-py${{ matrix.python-version }}"
           # ```
           # target/bundle-release/bundle/deb/pytauri-app_0.1.0_amd64.deb
           # target/{profile}/bundle/{bundle_type}/{product_name}_{version}_{arch}.{bundle_ext}
