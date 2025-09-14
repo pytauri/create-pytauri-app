@@ -1,0 +1,212 @@
+# ref:
+# - <https://github.com/pytauri/pytauri/blob/v0.8.0/.github/workflows/lint-test.yml>
+# - <https://github.com/pawamoy/copier-uv/blob/1.9.0/.github/workflows/ci.yml>
+
+name: Test
+
+# We only automatically run checks for PRs.
+# It is best to avoid direct commits to the main branch, instead make a PR for checks.
+on:
+  pull_request:
+  merge_group: # needed for merge queue
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  project-name: "pytauri-app"
+  repo-dir: "create-pytauri-app-repo"
+
+jobs:
+  # don't use `pull_request.paths`, see: <https://github.com/github/docs/issues/8926#issuecomment-1635678516>
+  changes:
+    runs-on: ubuntu-latest
+    # Required permissions
+    permissions:
+      pull-requests: read
+    outputs:
+      # ref: <https://github.com/dorny/paths-filter/issues/223#issuecomment-3187277292>
+      changed: ${{ contains(steps.filter.outputs.changes, 'paths') }}
+    steps:
+      - uses: actions/checkout@v4 # IMPORTANT: <https://github.com/dorny/paths-filter/issues/212#issuecomment-1960976719>
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          # TODO: fix IDE error, see <https://github.com/dorny/paths-filter/issues/225>
+          predicate-quantifier: "every"
+          # 👇 see: <https://github.com/PyO3/pyo3/pull/3212>
+          base: ${{ github.event.pull_request.base.ref || github.event.merge_group.base_ref }}
+          ref: ${{ github.event.pull_request.head.ref || github.event.merge_group.head_ref }}
+          # 👆
+          filters: |
+            paths:
+              - "!docs/**"
+              - "!**/*.md"
+              - "!.github/ISSUE_TEMPLATE/**"
+              - "!.github/dependabot.yml"
+              - "!.github/pull_request_template.md"
+
+  test:
+    needs: changes
+    if: ${{ !startsWith(github.head_ref, 'releases/') && needs.changes.outputs.changed == 'true'}}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # NOTE: keep python version in sync with `scripts/*/build.sh` in the template
+        python-version: ["3.13"]
+        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        # 👇 See `copier.yaml`
+        template: ["vue", "react", "svelte"]
+        # 👆
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # copier dont like shallow clone
+          path: ${{ env.repo-dir }}
+      - name: Install Copier
+        run: pipx install copier -v
+      - name: Generate project from template
+        run: |
+            copier copy ${{ env.repo-dir }} . \
+                --vcs-ref HEAD --force --defaults \
+                --data project_name=${{ env.project-name }} \
+                --data template=${{ matrix.template }}
+            shopt -s dotglob nullglob
+            mv ${{ env.project-name }}/* ./
+            rmdir ${{ env.project-name }}
+            rm -rf ${{ env.repo-dir }}
+      - name: List files
+        run: |
+            echo "PWD: $PWD"
+            echo "Files:"
+            find .
+      - name: Upload generated project
+        uses: actions/upload-artifact@v4
+        with:
+          name: "template-${{ matrix.template }}-${{ matrix.os }}-py${{ matrix.python-version }}"
+          path: "./"
+          if-no-files-found: error
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          # see: <https://docs.astral.sh/uv/guides/integration/github/>
+          #
+          # NOTE: For matrix jobs, we must set `python-version`,
+          # otherwise `uv` may incorrectly use other Python versions cached in GitHub Actions.
+          # See: <https://github.com/astral-sh/uv/pull/9454>.
+          python-version: ${{ matrix.python-version }}
+          # TODO: set `[tool.uv].required-version` version in template
+          # version-file: "pyproject.toml"
+          version: "latest"
+          enable-cache: true
+          activate-environment: true
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        id: setup-python
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # see: <https://github.com/pnpm/action-setup>
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          # TODO: set `packageManager` version in template
+          version: "latest"
+      # see: <https://github.com/actions/setup-node>
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          # TODO: set `engines.node` version in template
+          # node-version-file: package.json
+          node-version: lts/*
+          cache: "pnpm"
+          # TODO: We need to manually specify `cache-dependency-path`,
+          # because the generated template doesn't include `pnpm-lock.yaml`,
+          # which would cause `actions/setup-node` errors, see:
+          # - <https://github.com/actions/setup-node/issues/782#issuecomment-1594677973>
+          # - <https://github.com/actions/setup-node/issues/928>
+          cache-dependency-path: |
+            **/package.json
+            **/pnpm-lock.yaml
+
+      # see: <https://github.com/dtolnay/rust-toolchain>
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        # with:
+        #   components: rustfmt, clippy
+      # see: <https://github.com/swatinem/rust-cache>
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          key: py-${{ matrix.python-version }} # IMPORTANT: will link to different libpython
+          save-if: ${{ github.event_name != 'merge_group' }} # see: <https://github.com/PyO3/pyo3/pull/3886>
+
+      # see: <https://github.com/tauri-apps/tauri-action/tree/6a45448f17a006facb105cc5257b3edbc353038a?tab=readme-ov-file#usage>
+      - name: Install system dependencies (ubuntu only)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+      - name: Install project dependencies
+        run: |
+            pnpm install
+            uv sync
+
+      - name: Test Building (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+            scripts\windows\download-py.ps1
+            scripts\windows\build.ps1
+      - name: Test Building (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        shell: bash
+        run: |
+            chmod +x scripts/linux/*.sh
+            scripts/linux/download-py.sh
+            scripts/linux/build.sh
+      - name: Test Building (macOS)
+        if: matrix.os == 'macos-latest'
+        shell: bash
+        run: |
+            chmod +x scripts/macos/*.sh
+            scripts/macos/download-py.sh
+            scripts/macos/build.sh
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: "build-${{ matrix.os }}-${{ matrix.template }}-py${{ matrix.python-version }}"
+          # ```
+          # target/bundle-release/bundle/deb/pytauri-app_0.1.0_amd64.deb
+          # target/{profile}/bundle/{bundle_type}/{product_name}_{version}_{arch}.{bundle_ext}
+          # ```
+          # see: <https://github.com/pytauri/example-nicegui-app/releases>
+          path: |
+              target/*/bundle/*/*.deb
+              target/*/bundle/*/*.rpm
+              target/*/bundle/*/*.AppImage
+              target/*/bundle/*/*.msi
+              target/*/bundle/*/*.exe
+              target/*/bundle/*/*.dmg
+              target/*/bundle/*/*.app/
+          if-no-files-found: error
+
+  # https://github.com/marketplace/actions/alls-green#why
+  lint-test-all-green: # This job does nothing and is only used for the branch protection
+    if: always() # IMPORTANT: mandatory
+    needs:
+      - changes
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
+          allowed-skips: "test"
