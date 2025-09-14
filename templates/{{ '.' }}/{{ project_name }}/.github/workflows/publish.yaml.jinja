@@ -160,4 +160,4 @@ jobs:
           releaseBody: "See the assets to download this version and install."
           releaseDraft: true
           includeDebug: true # Optional, disable to speed up the build
-          args: {% raw %}'--target=${{ matrix.target }} --config=src-tauri/tauri.bundle.json --verbose'{% endraw %}
+          args: {% raw %}'--target ${{ matrix.target }} --config src-tauri/tauri.bundle.json --verbose'{% endraw %}
