@@ -133,6 +133,7 @@ jobs:
           cache-dependency-path: |
             **/package.json
             **/pnpm-lock.yaml
+            **/pnpm-workspace.yaml
 
       # see: <https://github.com/dtolnay/rust-toolchain>
       - name: Install Rust stable

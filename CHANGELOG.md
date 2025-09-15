@@ -34,6 +34,10 @@ Alternatively, you can modify it to suit your workflow.
 
 ### Fixed
 
+- [#22](https://github.com/pytauri/create-pytauri-app/pull/22) - fix(svelte): fix incorrect `frontendDist` path in svelte template.
+
+    The output directory for Svelte template has now been changed from `build` directory to `dist` directory to match the `build.frontendDist` setting in `tauri.conf.json`.
+
 - [#20](https://github.com/pytauri/create-pytauri-app/pull/20) - fix: fix Linux and macOS build scripts.
 
     - Pass the `libpython` path correctly on Linux and macOS as `-L` arguments to `RUSTFLAGS`.
