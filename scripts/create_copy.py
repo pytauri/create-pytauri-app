@@ -1,5 +1,6 @@
-import os
+import shutil
 from pathlib import Path
+
 from copier import run_copy
 
 if __name__ == "__main__":
@@ -9,10 +10,12 @@ if __name__ == "__main__":
     kwargs = {
         "project_name": "pytauri-app",
         "identifier": "com.username.pytauri-app",
-        "template": "vue"
+        "template": "vue",
+        "with_rust": "false",
     }
 
+    # Clean up old templates to ensure a new, clean one.
     if OUTPUT_DIR.exists():
-        os.remove(OUTPUT_DIR)
+        shutil.rmtree(OUTPUT_DIR)
 
-    run_copy(str(TEMPLATE_DIR), str(OUTPUT_DIR), kwargs)
+    run_copy(str(TEMPLATE_DIR), str(OUTPUT_DIR), vcs_ref="HEAD", data=kwargs)
