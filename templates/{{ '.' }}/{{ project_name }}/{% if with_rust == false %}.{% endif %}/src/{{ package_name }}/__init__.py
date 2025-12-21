@@ -7,7 +7,7 @@ from pydantic import BaseModel
 from pytauri import Commands
 from pytauri_wheel.lib import builder_factory, context_factory
 
-SRC_TAURI_DIR = Path(__file__).parent.parent.parent.absolute()
+SRC_TAURI_DIR = Path(__file__).parent.parent.parent / "app" / "src-tauri"
 
 
 # If the DEV_SERVER env. variable is set, use that server for development (allows hot-reloading). Otherwise, use the built assets to serve the frontend.

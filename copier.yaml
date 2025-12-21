@@ -29,12 +29,13 @@ template:
     Svelte: svelte
   default: vue
 
-_frontend_path:
+frontend_path:
   type: str
-  default: "{% if with_rust == true %}.{% else %}./app{% endif %}"
+  default: "{% if with_rust == true %}./{% else %}./app/{% endif %}"
   when: false
 
 _message_after_copy: |
+  {% if with_rust == true %}
   Template created! To get started run:
       cd {{ project_name }}
       pnpm install
@@ -50,3 +51,16 @@ _message_after_copy: |
       pnpm tauri dev
 
   For building a standalone app, see the `scripts/` folder.
+  {% else %}
+  Template created! To get started run:
+      cd {{ project_name }}
+      pnpm install
+      pnpm build
+      uv venv
+      {%- if _copier_conf.os == "windows" %}
+      .venv\Scripts\activate
+      {%- else %}
+      source .venv/bin/activate
+      {%- endif %}
+      uv sync
+  {% endif %}
