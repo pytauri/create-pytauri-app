@@ -9,6 +9,7 @@ dependencies = [
     # [build-system]
     "setuptools >= 80",
     "setuptools-scm >= 8",
+    "copier>=9.10.3",
 ]
 
 [tool.uv]

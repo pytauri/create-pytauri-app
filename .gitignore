@@ -1,6 +1,8 @@
 **/__pycache__/
- 
+
 **/node_modules/
 target/
 .venv/
 .idea/
+
+.generated_template
