@@ -2,11 +2,12 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Literal
 
+from pydantic import BaseModel, computed_field
+
 from .prompting import Choice, ask, choose, select
 
 
-@dataclass
-class Answer:
+class Answer(BaseModel):
     project_name: str
     identifier: str
     frontend_lang: Literal["js", "py"]
@@ -14,19 +15,17 @@ class Answer:
     frontend_template: str
     use_rust: bool
 
+    @computed_field
     @property
     def package_name(self) -> str:
         return self.project_name.replace("-", "_")
 
+    @computed_field
     @property
-    def frontend_template_full(self):
-        frontend_template = self.frontend_template
-        if self.frontend_lang == "js":
-            frontend_template += "-ts" if self.frontend_flavor == "ts" else ""
-        return frontend_template
-
-    def to_dict(self):
-        return {k: str(v) for k, v in asdict(self).items()}
+    def frontend_template_full(self) -> str:
+        if self.frontend_lang == "js" and self.frontend_flavor == "ts":
+            return f"{self.frontend_template}-ts"
+        return self.frontend_template
 
 
 def ask_info() -> Answer:

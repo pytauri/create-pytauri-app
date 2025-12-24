@@ -89,7 +89,9 @@ def read_key_windows():
             elif ch == b"\x03":  # Ctrl-C
                 return "ctrl-c"
 
-            return ch.decode("utf-8", errors="ignore")
+            # Decode and return the character
+            char = ch.decode("utf-8", errors="ignore")
+            return char.lower() if char else None
 
 
 def read_key_unix():
@@ -114,7 +116,7 @@ def read_key_unix():
         elif ch == "\x03":  # Ctrl-C
             return "ctrl-c"
 
-        return ch
+        return ch.lower() if ch else None
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 
@@ -152,25 +154,29 @@ def choose(question: str, default: bool = False) -> bool:
     """
     Ask a yes/no question.
     Returns True for yes, False for no.
+    Press 'y' for yes, 'n' for no, or Enter for default.
     """
     suffix = " [Y/n]" if default else " [y/N]"
-    prompt = format_question(question + suffix)
+    prompt = format_question(question + colored(suffix, Color.DIM))
 
-    answer = input(prompt).strip().lower()
+    # Print the prompt
+    sys.stdout.write(prompt)
+    sys.stdout.flush() # Write directly
 
-    # Determine the result
-    if answer == "":
-        result = default
-    elif answer in ("y", "yes"):
-        result = True
-    elif answer in ("n", "no"):
-        result = False
-    else:
-        # Invalid input, use default
-        result = default
+    while True:
+        key = read_key()
+        if key == "y":
+            result = True
+            break
+        elif key == "n":
+            result = False
+            break
+        elif key == "enter":
+            result = default
+            break
 
-    # Move cursor up one line and clear it
-    sys.stdout.write(Command.MOVE_UP.value)
+    # Move cursor to beginning of the line and clear it
+    sys.stdout.write("\r")
     sys.stdout.write(Command.CLEAR_LINE.value)
 
     # Print final result
@@ -225,6 +231,3 @@ def select(question: str, choices: list[Choice]):
             print(format_answer(question, answer.label or answer.value.capitalize()))
 
             return answer.value
-        elif key == "ctrl-c":
-            sys.stdout.write("\n")
-            sys.exit(0)
