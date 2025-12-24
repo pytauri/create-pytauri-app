@@ -1,19 +1,18 @@
+import argparse
 import shutil
+from pathlib import Path
 
 from copier import run_copy
 
 from create_pytauri_app.prompting import choose
-from create_pytauri_app.questionnaire import ask_info
+from create_pytauri_app.questionnaire import Answer, ask_info
 from create_pytauri_app.utils import construct_finish_msg, get_project_root
 
 
-def main():
-    # output_dir = Path(".")
-    output_dir = get_project_root() / ".generated_template"
-
+def _main(output_dir: Path, answer: Answer | None = None) -> None:
     template_dir = get_project_root() / "templates"
 
-    info = ask_info()
+    info = answer or ask_info()
 
     project_dir = output_dir / info.project_name
 
@@ -78,3 +77,19 @@ def main():
     run_copy(str(template_dir / "_assets_"), str(frontend_dir / asset_dir), quiet=True)
 
     print(construct_finish_msg(info))
+
+
+def main():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--path",
+        help="path where to generate the project",
+        default=".",
+        type=Path,
+        required=False,
+    )
+
+    args = parser.parse_args()
+
+    _main(args.path)
