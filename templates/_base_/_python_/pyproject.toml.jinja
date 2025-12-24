@@ -1,0 +1,19 @@
+[project]
+name = "{{ project_name }}"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "ISOR3X", email = "isorex@icloud.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pytauri == 0.8.*",
+    "pydantic == 2.*",
+    "anyio == 4.*",
+    "pytauri-wheel == 0.8.*",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.2,<0.10.0"]
+build-backend = "uv_build"

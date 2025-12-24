@@ -9,7 +9,7 @@ def get_project_root():
 
 
 def construct_finish_msg(info: Answer) -> str:
-    msg = "Template created! To get started, run:\n"
+    msg = "\nTemplate created! To get started, run:\n"
     cmds = [
         f"cd {info.project_name}",
         "pnpm install",
