@@ -14,6 +14,4 @@ uv sync
 
 # activate venv
 .venv\Scripts\activate
-
-
 ```
