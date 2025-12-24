@@ -18,13 +18,13 @@ pytauri-project = { workspace = true }
 # See: <https://pytauri.github.io/pytauri/0.5/usage/tutorial/build-standalone/#get-portable-python>
 # ref: <https://github.com/microsoft/pyright/blob/1.1.391/docs/configuration.md#environment-options>
 exclude = [
-    "**/node_modules",
-    "**/__pycache__",
-    "**/dist",
-    "**/.*",
-    "**/pyembed",
-    # 👇 necessary, because when `tauri-cli bundles python,
-    # it will copy `pyembed` to the target directory (i.e., rust output dir).
-    "**/target",
-    # 👆
+  "**/node_modules",
+  "**/__pycache__",
+  "**/dist",
+  "**/.*",
+  "**/pyembed",
+  # 👇 necessary, because when `tauri-cli bundles python,
+  # it will copy `pyembed` to the target directory (i.e., rust output dir).
+  "**/target",
+  # 👆
 ]

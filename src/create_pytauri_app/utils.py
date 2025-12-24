@@ -39,7 +39,7 @@ def construct_finish_msg(info: Answer) -> str:
     else:
         dev_start_msg = ""
         dev_cmd = f"   python -m {info.package_name}"
-        
+
     msg += "\n" + dev_start_msg + dev_cmd
 
     return msg

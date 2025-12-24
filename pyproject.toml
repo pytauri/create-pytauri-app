@@ -3,20 +3,18 @@ name = "create-pytauri-app"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "ISOR3X", email = "isorex@icloud.com" }
-]
+authors = [{ name = "ISOR3X", email = "isorex@icloud.com" }]
 requires-python = ">=3.12"
 dependencies = [
-    # [cli]
-    "copier>=9.10.3",
-    # [project]
-    # "pytauri == 0.8.*",
-    # "pydantic == 2.*",
-    # "anyio == 4.*",
-    # [build-system]
-    # "setuptools >= 80",
-    # "setuptools-scm >= 8",
+  # [cli]
+  "copier>=9.10.3",
+  # [project]
+  # "pytauri == 0.8.*",
+  # "pydantic == 2.*",
+  # "anyio == 4.*",
+  # [build-system]
+  # "setuptools >= 80",
+  # "setuptools-scm >= 8",
 ]
 
 [project.scripts]
@@ -27,6 +25,4 @@ requires = ["uv_build>=0.9.2,<0.10.0"]
 build-backend = "uv_build"
 
 [dependency-groups]
-dev = [
-    "ruff>=0.14.10",
-]
+dev = ["ruff>=0.14.10"]

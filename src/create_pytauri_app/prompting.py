@@ -161,7 +161,7 @@ def choose(question: str, default: bool = False) -> bool:
 
     # Print the prompt
     sys.stdout.write(prompt)
-    sys.stdout.flush() # Write directly
+    sys.stdout.flush()  # Write directly
 
     while True:
         key = read_key()
