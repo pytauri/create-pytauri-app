@@ -33,7 +33,7 @@ def ask_info() -> Answer:
     identifier = ask("Identifier", f"com.{user}.{project_name}")
 
     frontend_langs = [
-        Choice(label="Python", value="py", meta="uv"),
+        # Choice(label="Python", value="py", meta="uv"),
         Choice(
             label="TypeScript / JavaScript", value="js", meta="pnpm, yarn, npm, bun"
         ),
@@ -46,7 +46,7 @@ def ask_info() -> Answer:
     match frontend_lang:
         case "js":
             frontend_frameworks = [
-                Choice(value="vanilla"),
+                # Choice(value="vanilla"),
                 Choice(value="vue", meta="https://vuejs.org/"),
                 Choice(value="svelte", meta="https://svelte.dev/"),
                 Choice(value="react", meta="https://react.dev/"),
@@ -62,7 +62,7 @@ def ask_info() -> Answer:
     if frontend_lang == "js":
         frontend_flavors = [
             Choice(label="TypeScript", value="ts"),
-            Choice(label="JavaScript", value="js"),
+            # Choice(label="JavaScript", value="js"),
         ]
         frontend_flavor = select("Choose your UI flavor", frontend_flavors)
 

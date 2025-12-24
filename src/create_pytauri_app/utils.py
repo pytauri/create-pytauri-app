@@ -18,16 +18,15 @@ def construct_finish_msg(info: Answer) -> str:
         cmds.append(
             "uv --python-preference only-system",
         )
+        if platform.system() == "Windows":
+            cmds.append(r".venv\Scripts\activate")
+        else:
+            cmds.append(r"source .venv/bin/activate")
 
     else:
         cmds.append(
             "pnpm build",
         )
-
-    if platform.system() == "Windows":
-        cmds.append(r".venv\Scripts\activate")
-    else:
-        cmds.append(r"source .venv/bin/activate")
 
     cmds.append("uv sync")
 
@@ -37,7 +36,7 @@ def construct_finish_msg(info: Answer) -> str:
         dev_start_msg = "\nFor development, run:\n"
         dev_cmd = "   pnpm tauri dev"
     else:
-        dev_start_msg = ""
+        dev_start_msg = "\nFor development, run:\n"
         dev_cmd = f"   python -m {info.package_name}"
 
     msg += "\n" + dev_start_msg + dev_cmd

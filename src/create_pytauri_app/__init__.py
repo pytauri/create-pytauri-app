@@ -26,6 +26,7 @@ def main():
     frontend_template_dir = template_dir / f"template-{info.frontend_template_full}"
 
     frontend_dir = project_dir if info.use_rust else project_dir / "app"
+    frontend_dist = "../dist" if info.use_rust else "../../app/dist"
 
     # Copy over frontend
     run_copy(
@@ -49,10 +50,10 @@ def main():
         # Copy over common
         run_copy(
             str(template_dir / "_base_" / "_common_"),
-            str(project_dir / "src-tauri" / info.package_name),
+            str(project_dir / "src-tauri"),
             vcs_ref="HEAD",
             quiet=True,
-            data=info.model_dump(),
+            data={**info.model_dump(), "frontend_dist": frontend_dist},
         )
     else:
         # Copy over python
@@ -69,7 +70,7 @@ def main():
             str(project_dir / "src" / info.package_name),
             vcs_ref="HEAD",
             quiet=True,
-            data=info.model_dump(),
+            data={**info.model_dump(), "frontend_dist": frontend_dist},
         )
 
     # Copy over assets

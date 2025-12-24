@@ -2,8 +2,11 @@ import sys
 
 from anyio.from_thread import start_blocking_portal
 from pydantic import BaseModel
-from pytauri import Commands
-from pytauri_wheel.lib import builder_factory, context_factory
+from pytauri import (
+    Commands,
+    builder_factory,
+    context_factory,
+)
 
 commands: Commands = Commands()
 
