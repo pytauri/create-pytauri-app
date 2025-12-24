@@ -6,3 +6,4 @@ target/
 .idea/
 
 .generated_template
+.ruff_cache
