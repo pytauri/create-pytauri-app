@@ -1,36 +1,20 @@
 import shutil
+from pathlib import Path
 
 from copier import run_copy
 
 from create_pytauri_app.prompting import choose
-from create_pytauri_app.questionnaire import Answer, ask_info
+from create_pytauri_app.questionnaire import ask_info
 from create_pytauri_app.utils import construct_finish_msg, get_project_root
 
 
-def get_info(use_fake: bool = False) -> Answer:
-    info = (
-        ask_info()
-        if use_fake
-        else Answer(
-            project_name="pytauri-app",
-            identifier="com.username.pytauri-app",
-            frontend_lang="js",
-            frontend_flavor="ts",
-            frontend_template="vue",
-            use_rust=True,
-        )
-    )
-
-    return info
-
-
 def main():
-    output_dir = get_project_root() / ".generated_template"
+    output_dir = Path(".")
 
     template_dir = get_project_root() / "templates"
     tauri_dir = template_dir / "_base_" / "src-tauri"
 
-    info = get_info()
+    info = ask_info()
 
     project_dir = output_dir / info.project_name
 
