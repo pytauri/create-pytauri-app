@@ -8,7 +8,7 @@ if __name__ == "__main__":
     OUTPUT_DIR = Path(__file__).parent.parent / ".generated_template" / "pytauri-app"
 
     kwargs = {
-        "project_name": "pytauri-app",
+        # "project_name": "pytauri-app",
         "identifier": "com.username.pytauri-app",
         "template": "vue",
         "with_rust": "false",
