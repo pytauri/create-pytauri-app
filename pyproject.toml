@@ -19,6 +19,9 @@ dependencies = [
     # "setuptools-scm >= 8",
 ]
 
+[project.scripts]
+create-pytauri-app = "create_pytauri_app:main"
+
 [build-system]
 requires = ["uv_build>=0.9.2,<0.10.0"]
 build-backend = "uv_build"
