@@ -66,7 +66,7 @@ def main():
         # Copy over common
         run_copy(
             str(template_dir / "_base_" / "_common_"),
-            str(project_dir / "src" / info.package_name / "tauri"),
+            str(project_dir / "src" / info.package_name),
             vcs_ref="HEAD",
             quiet=True,
             data=info.model_dump(),
