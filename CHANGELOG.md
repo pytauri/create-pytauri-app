@@ -38,24 +38,23 @@ Alternatively, you can modify it to suit your workflow.
 
 - [#22](https://github.com/pytauri/create-pytauri-app/pull/22) - fix(svelte): fix incorrect `frontendDist` path in svelte template.
 
-    The output directory for Svelte template has now been changed from `build` directory to `dist` directory to match the `build.frontendDist` setting in `tauri.conf.json`.
+  The output directory for Svelte template has now been changed from `build` directory to `dist` directory to match the `build.frontendDist` setting in `tauri.conf.json`.
 
 - [#20](https://github.com/pytauri/create-pytauri-app/pull/20) - fix: fix Linux and macOS build scripts.
+  - Pass the `libpython` path correctly on Linux and macOS as `-L` arguments to `RUSTFLAGS`.
+  - Temporarily disable `appimage` bundle target
 
-    - Pass the `libpython` path correctly on Linux and macOS as `-L` arguments to `RUSTFLAGS`.
-    - Temporarily disable `appimage` bundle target
+    Currently unable to build `appimage`, see <https://github.com/python-pillow/Pillow/issues/9198>.
 
-        Currently unable to build `appimage`, see <https://github.com/python-pillow/Pillow/issues/9198>.
+  - Change the default `identifier` to `com.username.{{ project_name }}`
 
-    - Change the default `identifier` to `com.username.{{ project_name }}`
-
-        Tauri no longer recommends identifiers ending with `.app`, see <https://github.com/tauri-apps/tauri/issues/12674>.
+    Tauri no longer recommends identifiers ending with `.app`, see <https://github.com/tauri-apps/tauri/issues/12674>.
 
 ### Security
 
 - [#19](https://github.com/pytauri/create-pytauri-app/pull/19) - chore(deps-dev): bump vite from 6.3.5 to 6.3.6 in the npm_and_yarn group across 1 directory.
 
-    bump `vite` to `6.3.6` to fix security advisory.
+  bump `vite` to `6.3.6` to fix security advisory.
 
 ### Internal
 
@@ -66,9 +65,8 @@ Alternatively, you can modify it to suit your workflow.
 ### Added
 
 - [#18](https://github.com/pytauri/create-pytauri-app/pull/18) - feat: bump `pytauri` to `v0.8`.
-
-    - bump `pytauri` monorepo to `v0.8`
-    - bump `python-build-standard` to `20250828`
+  - bump `pytauri` monorepo to `v0.8`
+  - bump `python-build-standard` to `20250828`
 
 ### Changed
 
@@ -97,9 +95,9 @@ Alternatively, you can modify it to suit your workflow.
 ### Changed
 
 - [#7](https://github.com/pytauri/create-pytauri-app/pull/7) - feat: update to pytauri `v0.6.0`.
-    - Bump all pytauri packages to `0.6`
-    - Migrate for pytauri `v0.6` [breaking changes](https://pytauri.github.io/pytauri/0.6/CHANGELOG/)
-    - Bump `pyo3` to `0.25`
+  - Bump all pytauri packages to `0.6`
+  - Migrate for pytauri `v0.6` [breaking changes](https://pytauri.github.io/pytauri/0.6/CHANGELOG/)
+  - Bump `pyo3` to `0.25`
 
 ## [0.1.0]
 

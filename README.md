@@ -6,12 +6,18 @@ The recommended way to start a new PyTauri project.
 
 ## How to use
 
-Make sure you have [uv](https://docs.astral.sh/uv/) and [pnpm](https://pnpm.io/) installed.
+Make sure you have [uv](https://docs.astral.sh/uv/) installed.
+
+For single use:
 
 ```shell
-uvx copier copy https://github.com/pytauri/create-pytauri-app .
+uvx --from git+https://github.com/pytauri/create-pytauri-app@feat/v0.6.0 create-pytauri-app
 ```
 
-## Refer
+To install the tool (allows usage from anywhere)
 
-- <https://github.com/orgs/copier-org/discussions/2121>
+```shell
+uv tool install git+https://github.com/pytauri/create-pytauri-app@feat/v0.6.0
+```
+
+More info on using tools in uv: https://docs.astral.sh/uv/guides/tools
